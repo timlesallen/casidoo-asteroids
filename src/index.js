@@ -34,12 +34,10 @@ const wins = (a, b) => {
   return Math.abs(x) > Math.abs(y) ? 'left' : 'right';
 };
 
-function asteroids (input) {
-  const midpoint = input.length / 2;
-  const m = merge(input.slice(0, midpoint), input.slice(midpoint));
-  return m;
-}
-
+/**
+ * Given two stable sections, what is the result of placing them next to each
+ * other?
+ */
 function merge (a, b) {
   if (a.length + b.length <= 1) return [...a, ...b];
   // Make sure both sections have stable state within section
@@ -52,6 +50,12 @@ function merge (a, b) {
     case 'right': return merge(a.slice(0, -1), b);
     default: return [...a, ...b]; // These sections are stable next to each other
   }
+}
+
+function asteroids (input) {
+  const midpoint = input.length / 2;
+  const m = merge(input.slice(0, midpoint), input.slice(midpoint));
+  return m;
 }
 
 module.exports = asteroids;
