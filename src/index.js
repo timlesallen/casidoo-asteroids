@@ -54,8 +54,7 @@ function merge (a, b) {
 
 function asteroids (input) {
   const midpoint = input.length / 2;
-  const m = merge(input.slice(0, midpoint), input.slice(midpoint));
-  return m;
+  return merge(input.slice(0, midpoint), input.slice(midpoint));
 }
 
 module.exports = asteroids;
