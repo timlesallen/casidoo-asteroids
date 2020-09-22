@@ -35,7 +35,7 @@ const wins = (a, b) => {
 };
 
 /**
- * Given two stable sections, what is the result of placing them next to each
+ * Given two sections, what is the result of placing them next to each
  * other?
  */
 function merge (a, b) {
@@ -43,11 +43,11 @@ function merge (a, b) {
   // Make sure both sections have stable state within section
   a = asteroids(a);
   b = asteroids(b);
-  // Now check what happens when/if they collide
+  // Now check what happens when they are placed next to each other.
   switch (wins(a, b)) {
-    case 'neither': return merge(a.slice(0, -1), b.slice(1));
-    case 'left': return merge(a, b.slice(1));
-    case 'right': return merge(a.slice(0, -1), b);
+    case 'neither': return merge(a.slice(0, -1), b.slice(1)); // Both asteroids at touch point are lost
+    case 'left': return merge(a, b.slice(1)); // Left asteroid at touch point wins
+    case 'right': return merge(a.slice(0, -1), b); // Right asteroids at touch point wins
     default: return [...a, ...b]; // These sections are stable next to each other
   }
 }
